@@ -133,4 +133,14 @@ function library:arrest_robbers()
     humanoid_root_part.CFrame = pre_action_cframe
 end
 
+function library:anti_afk()
+    for _, connection in pairs(getconnections(local_player.Idled)) do
+        if connection.Disable then
+            connection.Disable(connection)
+        elseif connection.Disconnect then
+            connection.Disconnect(connection)
+        end
+    end
+end
+
 return library
